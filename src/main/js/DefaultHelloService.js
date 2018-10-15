@@ -1,4 +1,4 @@
-const {HelloResponse} = require('./proteus/service_pb');
+const {HelloResponse, PongResponse} = require('./proteus/service_pb');
 const {
     Single
 } = require('rsocket-flowable');
@@ -13,6 +13,14 @@ function DefaultHelloService(serviceName, logFunction) {
         resp.setMessage("Hello, " + message.getName() + "! from " + this.serviceName);
         return Single.of(resp);
     };
+
+    this.ping = function(pingRequest){
+        logFunction("Received Ping message:" + pingRequest.getMessage());
+        logFunction("Responding...");
+        const resp = new PongResponse();
+        resp.setMessage("Pong from " + this.serviceName);
+        return Single.of(resp);
+    }
 }
 
 //DefaultHelloService.constructor = DefaultHelloService;

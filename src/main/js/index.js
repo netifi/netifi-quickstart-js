@@ -1,4 +1,4 @@
-const {runHello} = require('./runner');
+const {runHello, runPing} = require('./runner');
 
 function addMessage(message) {
     var ul = document.getElementById('messages');
@@ -11,4 +11,4 @@ function addMessage(message) {
 }
 
 //Run the Hello Service, "as server" injected by config, false by default. Client subscriber injected
-runHello(__AS_SERVER__, addMessage);
+runPing(__AS_SERVER__, addMessage);
