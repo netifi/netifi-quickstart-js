@@ -26,10 +26,10 @@
     "rsocket-rpc-metrics": "^0.0.1",
     "rsocket-rpc-protobuf": "^0.1.5",
     "rsocket-rpc-tracing": "^0.0.3",
-    "webpack": "3.2.0"
+    "webpack": "3.2.0",
+    "copy-webpack-plugin": "^4.6.0",
   },
   "dependencies": {
-    "copy-webpack-plugin": "^4.6.0",
     "google-protobuf": "^3.6.1",
     "proteus-js-client": "^1.5.3",
     "ws": "^6.1.0"
