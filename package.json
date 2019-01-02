@@ -27,7 +27,7 @@
     "rsocket-rpc-protobuf": "^0.1.5",
     "rsocket-rpc-tracing": "^0.0.3",
     "webpack": "3.2.0",
-    "copy-webpack-plugin": "^4.6.0",
+    "copy-webpack-plugin": "^4.6.0"
   },
   "dependencies": {
     "google-protobuf": "^3.6.1",
