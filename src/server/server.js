@@ -1,4 +1,4 @@
-const {runHello} = require('./runner');
+const {runHello} = require('../shared/runner');
 
 const runAsClient = process.argv[2] === 'true';
 console.log("Args: " + JSON.stringify(process.argv));
