@@ -1,10 +1,11 @@
 const path = require('path');
 const webpack = require('webpack');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
-    entry: path.resolve(__dirname, './src/main/js/index.js'),
+    entry: path.resolve(__dirname, './src/client/js/index.js'),
     output: {
-        path: path.resolve(__dirname, './src/main/resources/web/public/'),
+        path: path.resolve(__dirname, './build/'),
         filename: 'app.js',
     },
     plugins: [
@@ -12,6 +13,12 @@ module.exports = {
             '__DEV__': true,
             '__AS_SERVER__': false,
         }),
+        new CopyWebpackPlugin([
+            {
+                from: './src/client/index.html',
+                to: './index.html'
+            }
+        ])
     ],
     module: {
         loaders: [
