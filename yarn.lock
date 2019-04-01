@@ -2254,6 +2254,11 @@ invert-kv@^1.0.0:
   resolved "https://registry.yarnpkg.com/invert-kv/-/invert-kv-1.0.0.tgz#104a8e4aaca6d3d8cd157a8ef8bfab2d7a3ffdb6"
   integrity sha1-EEqOSqym09jNFXqO+L+rLXo//bY=
 
+ipaddr.js@^1.9.0:
+  version "1.9.0"
+  resolved "https://registry.yarnpkg.com/ipaddr.js/-/ipaddr.js-1.9.0.tgz#37df74e430a0e47550fe54a2defe30d8acd95f65"
+  integrity sha512-M4Sjn6N/+O6/IXSJseKqHoFc+5FdGJ22sXqnjTpdZweHK64MzEPAyQZyEU3R/KRv2GLoa7nNtg/C2Ev6m7z+eA==
+
 is-accessor-descriptor@^0.1.6:
   version "0.1.6"
   resolved "https://registry.yarnpkg.com/is-accessor-descriptor/-/is-accessor-descriptor-0.1.6.tgz#a9e12cb3ae8d876727eeef3843f8a0897b5c98d6"
@@ -2452,6 +2457,11 @@ isstream@~0.1.2:
   version "0.1.2"
   resolved "https://registry.yarnpkg.com/isstream/-/isstream-0.1.2.tgz#47e63f7af55afa6f92e1500e690eb8b8529c099a"
   integrity sha1-R+Y/evVa+m+S4VAOaQ64uFKcCZo=
+
+js-md5@^0.7.3:
+  version "0.7.3"
+  resolved "https://registry.yarnpkg.com/js-md5/-/js-md5-0.7.3.tgz#b4f2fbb0b327455f598d6727e38ec272cd09c3f2"
+  integrity sha512-ZC41vPSTLKGwIRjqDh8DfXoCrdQIyBgspJVPXHBGu4nZlAEvG3nf+jO9avM9RmLiGakg7vz974ms99nEV0tmTQ==
 
 "js-tokens@^3.0.0 || ^4.0.0":
   version "4.0.0"
@@ -3326,19 +3336,24 @@ promise@^7.1.1:
   dependencies:
     asap "~2.0.3"
 
-proteus-js-client@^1.5.3:
-  version "1.5.3"
-  resolved "https://registry.yarnpkg.com/proteus-js-client/-/proteus-js-client-1.5.3.tgz#a99a081e1ac54a699d4e7d5e3cca1366910514cf"
-  integrity sha512-4xvJIvJQSOoqxc7HoE11126LQQQOV0TlEhWp7sG6kaL710V6lnDaGbdoI2uRPlN7Ai5fJm/lkInp8B+WnfrXVA==
+proteus-js-client@^1.6.0:
+  version "1.6.0"
+  resolved "https://registry.yarnpkg.com/proteus-js-client/-/proteus-js-client-1.6.0.tgz#4ffa00471346aff8840884f09b9e6203e1f2d59e"
+  integrity sha512-G4W4fFF8/kComec12sxfZVtHnXso73G5rFE8B0EAWy34J8v37pp7CAirUDYHlJqbLbo7N7BIQxAvyvidcrIV1w==
   dependencies:
     google-protobuf "^3.6.0"
+    ipaddr.js "^1.9.0"
+    js-md5 "^0.7.3"
+    long "^4.0.0"
     opentracing "^0.14.3"
+    rsocket-flowable "^0.0.10"
     rsocket-rpc-core "^0.0.4"
     rsocket-rpc-frames "^0.0.3"
     rsocket-rpc-metrics "^0.0.1"
     rsocket-rpc-tracing "^0.0.3"
-    rsocket-websocket-client "^0.0.9"
+    rsocket-websocket-client "^0.0.10"
     rxjs "^6.2.2"
+    uuid "^3.3.2"
 
 prr@~1.0.1:
   version "1.0.1"
@@ -3664,6 +3679,15 @@ ripemd160@^2.0.0, ripemd160@^2.0.1:
     hash-base "^3.0.0"
     inherits "^2.0.1"
 
+rsocket-core@^0.0.10:
+  version "0.0.10"
+  resolved "https://registry.yarnpkg.com/rsocket-core/-/rsocket-core-0.0.10.tgz#937b2d1e562e80e86e20fea445be37e0e2f88962"
+  integrity sha512-u7PolLWw2yP2l/xLUegfr0YhfYorbw+gk98QeKSb8c8Qe+1/jTuwgKI/hfFvkHkx9ByrX8FFNv64EsPDcbcfvA==
+  dependencies:
+    fbjs "^0.8.12"
+    rsocket-flowable "^0.0.10"
+    rsocket-types "^0.0.10"
+
 rsocket-core@^0.0.9:
   version "0.0.9"
   resolved "https://registry.yarnpkg.com/rsocket-core/-/rsocket-core-0.0.9.tgz#501f41390b11f50f9c62d38ca4867990de7d9af5"
@@ -3672,6 +3696,13 @@ rsocket-core@^0.0.9:
     fbjs "^0.8.12"
     rsocket-flowable "^0.0.9"
     rsocket-types "^0.0.9"
+
+rsocket-flowable@^0.0.10:
+  version "0.0.10"
+  resolved "https://registry.yarnpkg.com/rsocket-flowable/-/rsocket-flowable-0.0.10.tgz#6e02f87145fde0d73b165f37b98bd39e7a95b50d"
+  integrity sha512-H8DWjne8atb1wtQ7cFhQV1Rq6MmRGniqaP6x8zM1avx2qt4SfyQDC9BlKRMDcwxkqt03MHz9MzYKsWfV44lUDg==
+  dependencies:
+    fbjs "^0.8.12"
 
 rsocket-flowable@^0.0.9:
   version "0.0.9"
@@ -3741,6 +3772,15 @@ rsocket-rpc-tracing@^0.0.3:
     rsocket-rpc-frames "^0.0.3"
     rsocket-types "^0.0.9"
 
+rsocket-types@^0.0.10:
+  version "0.0.10"
+  resolved "https://registry.yarnpkg.com/rsocket-types/-/rsocket-types-0.0.10.tgz#5065fc0d8d7531fbf71aad330370b6adbbc7a97b"
+  integrity sha512-EO0iSSt5AOvEysUtA0Fm0i+pNWNcPIDLPAD0kP8Tk/IwYGyr303USF+1n2H9wuLMqqBQwWSv5E/VG46TztZJdg==
+  dependencies:
+    buffer "^5.0.6"
+    fbjs "^0.8.12"
+    rsocket-flowable "^0.0.10"
+
 rsocket-types@^0.0.9:
   version "0.0.9"
   resolved "https://registry.yarnpkg.com/rsocket-types/-/rsocket-types-0.0.9.tgz#4376fcf512b9d7b923da26602ab93b7a35166d5d"
@@ -3750,15 +3790,15 @@ rsocket-types@^0.0.9:
     fbjs "^0.8.12"
     rsocket-flowable "^0.0.9"
 
-rsocket-websocket-client@^0.0.9:
-  version "0.0.9"
-  resolved "https://registry.yarnpkg.com/rsocket-websocket-client/-/rsocket-websocket-client-0.0.9.tgz#6d7c2103389c0f0d599aefafb22814cec3cbef3d"
-  integrity sha512-fMBRQJwJNqY1Ixto5ZsaFKHURY6Y9qp1atzLk7yEDUmsSTNk5iuLmnYs4LpqLBu1MwquAc6YYCM13MN/G7Vcbg==
+rsocket-websocket-client@^0.0.10:
+  version "0.0.10"
+  resolved "https://registry.yarnpkg.com/rsocket-websocket-client/-/rsocket-websocket-client-0.0.10.tgz#2e1379dd017125cbe46a64a15986241f18e9d2df"
+  integrity sha512-l/BTSgfhL/Cg4mCCRcYq3IP/oagWY+HJJKRWAtzOHFJs/W1/MYajmJCzdIqp5czrGnUwQ3JSLvShGeknNLwNdQ==
   dependencies:
     fbjs "^0.8.12"
-    rsocket-core "^0.0.9"
-    rsocket-flowable "^0.0.9"
-    rsocket-types "^0.0.9"
+    rsocket-core "^0.0.10"
+    rsocket-flowable "^0.0.10"
+    rsocket-types "^0.0.10"
 
 rsvp@^3.0.13:
   version "3.6.2"

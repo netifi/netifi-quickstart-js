@@ -31,7 +31,7 @@
   },
   "dependencies": {
     "google-protobuf": "^3.6.1",
-    "proteus-js-client": "^1.5.3",
+    "proteus-js-client": "^1.6.0",
     "ws": "^6.1.0"
   }
 }
