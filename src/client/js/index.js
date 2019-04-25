@@ -1,4 +1,4 @@
-const {runHello, runPing} = require('./runner');
+const {runHello, runPing} = require('../../shared/runner');
 
 function addMessage(message) {
     var ul = document.getElementById('messages');
