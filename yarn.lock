@@ -3336,10 +3336,10 @@ promise@^7.1.1:
   dependencies:
     asap "~2.0.3"
 
-proteus-js-client@^1.6.0:
-  version "1.6.0"
-  resolved "https://registry.yarnpkg.com/proteus-js-client/-/proteus-js-client-1.6.0.tgz#4ffa00471346aff8840884f09b9e6203e1f2d59e"
-  integrity sha512-G4W4fFF8/kComec12sxfZVtHnXso73G5rFE8B0EAWy34J8v37pp7CAirUDYHlJqbLbo7N7BIQxAvyvidcrIV1w==
+proteus-js-client@^1.6.1:
+  version "1.6.1"
+  resolved "https://registry.yarnpkg.com/proteus-js-client/-/proteus-js-client-1.6.1.tgz#a387fec60294fc4b585fd7fad361c9336bf9f1ce"
+  integrity sha512-csKGT4Bw+1yD2Zd06otyIIBkapOI8PW1QE/quxKVt1ZGvxL/Ed4SR3zy1BfL+Fu2xszHVTY1qGKcNPfH86frtA==
   dependencies:
     google-protobuf "^3.6.0"
     ipaddr.js "^1.9.0"
