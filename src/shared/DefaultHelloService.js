@@ -1,4 +1,4 @@
-const {HelloResponse} = require('./proteus/service_pb');
+const {HelloResponse} = require('./netifi/service_pb');
 const {
     Single
 } = require('rsocket-flowable');

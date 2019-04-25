@@ -1,10 +1,10 @@
 const {DefaultHelloService} = require("./DefaultHelloService");
 
-const {HelloRequest} = require('./proteus/service_pb');
-const {HelloServiceClient, HelloServiceServer} = require('./proteus/service_rsocket_pb');
-const {Proteus} = require('proteus-js-client');
+const {HelloRequest} = require('./netifi/service_pb');
+const {HelloServiceClient, HelloServiceServer} = require('./netifi/service_rsocket_pb');
+const {Netifi} = require('netifi-js-client');
 const generateName = require('./nameGenerator');
-const QUICKSTART_SERVICE_NAME = "io.netifi.proteus.quickstart.service.HelloService";
+const QUICKSTART_SERVICE_NAME = "com.netifi.quickstart.service.HelloService";
 
 function runHello(isServer, logFunction){
 
@@ -13,7 +13,7 @@ function runHello(isServer, logFunction){
 
     logFunction('Connecting gateway with group ' + groupName + ' and destination ' + destinationName);
 
-    const proteusGateway = Proteus.create({
+    const netifiGateway = Netifi.create({
         setup: {
             group: groupName,
             destination: destinationName,
@@ -27,11 +27,11 @@ function runHello(isServer, logFunction){
 
     if(isServer){
         const serviceName = "helloservice-" + destinationName;
-        proteusGateway.addService(QUICKSTART_SERVICE_NAME, new HelloServiceServer(new DefaultHelloService(serviceName, logFunction)));
-        proteusGateway._connect();
+        netifiGateway.addService(QUICKSTART_SERVICE_NAME, new HelloServiceServer(new DefaultHelloService(serviceName, logFunction)));
+        netifiGateway._connect();
     } else {
-        // Connect to Netifi Proteus Platform
-        const conn = proteusGateway.group("quickstart.servers");
+        // Connect to Netifi Netifi Platform
+        const conn = netifiGateway.group("quickstart.servers");
 
         // Create Client to Communicate with the HelloService (included example service)
         const client = new HelloServiceClient(conn);

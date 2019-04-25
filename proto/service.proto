@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package io.netifi.proteus.quickstart.service;
+package com.netifi.quickstart.service;
 
 service HelloService {
 

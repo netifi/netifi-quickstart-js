@@ -15,7 +15,7 @@ runHello(!runAsClient , console.log);
 const http = require('http');
 http
     .createServer(function(req, res) {
-        res.write("I'm just waiting for Proteus messages!");
+        res.write("I'm just waiting for Netifi messages!");
         res.end();
     })
     .listen(9091);

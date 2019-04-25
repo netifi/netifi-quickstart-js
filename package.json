@@ -1,7 +1,7 @@
 {
-  "name": "proteus-quickstart-js",
+  "name": "netifi-quickstart-js",
   "version": "1.0.3",
-  "description": "The Proteus Quickstart exercise for JavaScript",
+  "description": "The Netifi Quickstart exercise for JavaScript",
   "main": "index.js",
   "contributors": [
     "Kyle Bahr (kyle@netifi.com)",
@@ -14,7 +14,7 @@
     "start": "webpack && http-server ./build -p 3000 -c-1",
     "server": "node src/server/server.js",
     "server-as-client": "node src/server/server.js true",
-    "protoc": "protoc --proto_path=proto --proto_path=node_modules/rsocket-rpc-protobuf/proto --js_out=import_style=commonjs,binary:src/shared/proteus --rsocket_rpc_out=src/shared/proteus --plugin=protoc-gen-rsocket_rpc=node_modules/.bin/rsocket_rpc_js_protoc_plugin proto/*.proto"
+    "protoc": "protoc --proto_path=proto --proto_path=node_modules/rsocket-rpc-protobuf/proto --js_out=import_style=commonjs,binary:src/shared/netifi --rsocket_rpc_out=src/shared/netifi --plugin=protoc-gen-rsocket_rpc=node_modules/.bin/rsocket_rpc_js_protoc_plugin proto/*.proto"
   },
   "devDependencies": {
     "babel-core": "^6.26.3",
@@ -31,7 +31,7 @@
   },
   "dependencies": {
     "google-protobuf": "^3.6.1",
-    "proteus-js-client": "^1.6.1",
+    "netifi-js-client": "^1.6.1",
     "ws": "^6.1.0"
   }
 }
