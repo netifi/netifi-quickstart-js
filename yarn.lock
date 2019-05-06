@@ -2892,10 +2892,10 @@ neo-async@^2.5.0:
   resolved "https://registry.yarnpkg.com/neo-async/-/neo-async-2.6.0.tgz#b9d15e4d71c6762908654b5183ed38b753340835"
   integrity sha512-MFh0d/Wa7vkKO3Y3LlacqAEeHK0mckVqzDieUKTT+KGxi+zIpeVsFxymkIiRpbpDziHc290Xr9A1O4Om7otoRA==
 
-netifi-js-client@^1.6.2-SNAPSHOT-0:
-  version "1.6.2-SNAPSHOT-0"
-  resolved "https://registry.yarnpkg.com/netifi-js-client/-/netifi-js-client-1.6.2-SNAPSHOT-0.tgz#c2d3609b5ed7b1c78e861bf40f236c224aeea4e4"
-  integrity sha512-L5NWsOCz36/LB4bSvT37AjgAv3tn9L+YdaNrYEIhNEdkgSe15CViJM93aiGtDmp63MBawgnlTCYKbCdfkKTwPA==
+netifi-js-client@^1.6.2:
+  version "1.6.2"
+  resolved "https://registry.yarnpkg.com/netifi-js-client/-/netifi-js-client-1.6.2.tgz#528f3e22645acb21e10c309e02ff6ca2db65c0bc"
+  integrity sha512-mWNsCfgPgLmfP4CmtDJJzkg0wZWRVZgyR6eOCIQz29OtN+B+okZ/UyKsPxk5ouZvzRBGvtN81BB5EPd1wQx4Jw==
   dependencies:
     google-protobuf "^3.6.0"
     ipaddr.js "^1.9.0"
