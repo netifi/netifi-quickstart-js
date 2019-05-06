@@ -31,7 +31,7 @@
   },
   "dependencies": {
     "google-protobuf": "^3.6.1",
-    "netifi-js-client": "^1.6.1",
+    "netifi-js-client": "^1.6.2",
     "ws": "^6.1.0"
   }
 }
