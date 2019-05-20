@@ -14,6 +14,8 @@ var HelloServiceClient = function () {
     this._tracer = tracer;
     this.sayHelloTrace = rsocket_rpc_tracing.traceSingle(tracer, "HelloService", {"rsocket.rpc.service": "com.netifi.quickstart.service.HelloService"}, {"method": "sayHello"}, {"rsocket.rpc.role": "client"});
     this.sayHelloMetrics = rsocket_rpc_metrics.timedSingle(meterRegistry, "HelloService", {"service": "com.netifi.quickstart.service.HelloService"}, {"method": "sayHello"}, {"role": "client"});
+    this.pingTrace = rsocket_rpc_tracing.traceSingle(tracer, "HelloService", {"rsocket.rpc.service": "com.netifi.quickstart.service.HelloService"}, {"method": "ping"}, {"rsocket.rpc.role": "client"});
+    this.pingMetrics = rsocket_rpc_metrics.timedSingle(meterRegistry, "HelloService", {"service": "com.netifi.quickstart.service.HelloService"}, {"method": "ping"}, {"role": "client"});
   }
   // Returns a Hello World Message
   HelloServiceClient.prototype.sayHello = function sayHello(message, metadata) {
@@ -35,6 +37,26 @@ var HelloServiceClient = function () {
       )
     );
   };
+  // Send a ping w/ message, receive a pong w/ message
+  HelloServiceClient.prototype.ping = function ping(message, metadata) {
+    const map = {};
+    return this.pingMetrics(
+      this.pingTrace(map)(new rsocket_flowable.Single(subscriber => {
+        var dataBuf = Buffer.from(message.serializeBinary());
+        var tracingMetadata = rsocket_rpc_tracing.mapToBuffer(map);
+        var metadataBuf = rsocket_rpc_frames.encodeMetadata('com.netifi.quickstart.service.HelloService', 'Ping', tracingMetadata, metadata || Buffer.alloc(0));
+          this._rs.requestResponse({
+            data: dataBuf,
+            metadata: metadataBuf
+          }).map(function (payload) {
+            //TODO: resolve either 'https://github.com/rsocket/rsocket-js/issues/19' or 'https://github.com/google/protobuf/issues/1319'
+            var binary = !payload.data || payload.data.constructor === Buffer || payload.data.constructor === Uint8Array ? payload.data : new Uint8Array(payload.data);
+            return service_pb.PongResponse.deserializeBinary(binary);
+          }).subscribe(subscriber);
+        })
+      )
+    );
+  };
   return HelloServiceClient;
 }();
 
@@ -46,6 +68,8 @@ var HelloServiceServer = function () {
     this._tracer = tracer;
     this.sayHelloTrace = rsocket_rpc_tracing.traceSingleAsChild(tracer, "HelloService", {"rsocket.rpc.service": "com.netifi.quickstart.service.HelloService"}, {"method": "sayHello"}, {"rsocket.rpc.role": "server"});
     this.sayHelloMetrics = rsocket_rpc_metrics.timedSingle(meterRegistry, "HelloService", {"service": "com.netifi.quickstart.service.HelloService"}, {"method": "sayHello"}, {"role": "server"});
+    this.pingTrace = rsocket_rpc_tracing.traceSingleAsChild(tracer, "HelloService", {"rsocket.rpc.service": "com.netifi.quickstart.service.HelloService"}, {"method": "ping"}, {"rsocket.rpc.role": "server"});
+    this.pingMetrics = rsocket_rpc_metrics.timedSingle(meterRegistry, "HelloService", {"service": "com.netifi.quickstart.service.HelloService"}, {"method": "ping"}, {"role": "server"});
     this._channelSwitch = (payload, restOfMessages) => {
       if (payload.metadata == null) {
         return rsocket_flowable.Flowable.error(new Error('metadata is empty'));
@@ -76,6 +100,22 @@ var HelloServiceServer = function () {
               var binary = !payload.data || payload.data.constructor === Buffer || payload.data.constructor === Uint8Array ? payload.data : new Uint8Array(payload.data);
               return this._service
                 .sayHello(service_pb.HelloRequest.deserializeBinary(binary), payload.metadata)
+                .map(function (message) {
+                  return {
+                    data: Buffer.from(message.serializeBinary()),
+                    metadata: Buffer.alloc(0)
+                  }
+                }).subscribe(subscriber);
+              }
+            )
+          )
+        );
+        case 'Ping':
+          return this.pingMetrics(
+            this.pingTrace(spanContext)(new rsocket_flowable.Single(subscriber => {
+              var binary = !payload.data || payload.data.constructor === Buffer || payload.data.constructor === Uint8Array ? payload.data : new Uint8Array(payload.data);
+              return this._service
+                .ping(service_pb.PingRequest.deserializeBinary(binary), payload.metadata)
                 .map(function (message) {
                   return {
                     data: Buffer.from(message.serializeBinary()),

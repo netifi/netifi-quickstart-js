@@ -1,4 +1,4 @@
-const {runHello} = require('../shared/runner');
+const {runPing} = require('../shared/runner');
 
 const runAsClient = process.argv[2] === 'true';
 console.log("Args: " + JSON.stringify(process.argv));
@@ -7,10 +7,8 @@ console.log("I'm a client: " + runAsClient);
 
 global.WebSocket = global.WebSocket || require('ws');
 
-
-
 //Run the Hello Service, as-server by default, client subscriber provided in case running as client
-runHello(!runAsClient , console.log);
+runPing(!runAsClient , console.log);
 
 const http = require('http');
 http

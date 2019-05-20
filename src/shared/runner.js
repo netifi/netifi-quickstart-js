@@ -1,6 +1,6 @@
 const {DefaultHelloService} = require("./DefaultHelloService");
 
-const {HelloRequest} = require('./netifi/service_pb');
+const {HelloRequest, PingRequest} = require('./netifi/service_pb');
 const {HelloServiceClient, HelloServiceServer} = require('./netifi/service_rsocket_pb');
 const {Netifi} = require('netifi-js-client');
 const generateName = require('./nameGenerator');
@@ -52,7 +52,61 @@ function runHello(isServer, logFunction){
             }
         });
     }
+}
+
+function runPing(isServer, logFunction){
+
+    const groupName = isServer ? "quickstart.servers" : "quickstart.clients";
+    const destinationName = isServer ? generateName() : "client1";
+
+    logFunction('Connecting gateway with group ' + groupName + ' and destination ' + destinationName);
+
+    const netifiGateway = Netifi.create({
+        setup: {
+            group: groupName,
+            destination: destinationName,
+            accessKey: 9007199254740991,
+            accessToken: 'kTBDVtfRBO4tHOnZzSyY5ym2kfY=',
+        },
+        transport: {
+            url: "ws://localhost:8101/",
+        },
+    });
+
+    if(isServer){
+        const serviceName = "helloservice-" + destinationName;
+        netifiGateway.addService(QUICKSTART_SERVICE_NAME, new HelloServiceServer(new DefaultHelloService(serviceName, logFunction)));
+        netifiGateway._connect();
+    } else {
+        // Connect to Netifi Netifi Platform
+        const conn = netifiGateway.group("quickstart.servers");
+
+        // Create Client to Communicate with the HelloService (included example service)
+        const client = new HelloServiceClient(conn);
+
+        const singleCall = function singleCall(){
+            // Create Request to HelloService
+            const request = new PingRequest();
+            request.setMessage("Pinging you...");
+
+            console.log("Sending PingRequest to HelloService...");
+
+            // Call the HelloService
+            client.ping(request).subscribe({
+                onComplete: response => {
+                    logFunction("Hello Service responded with: " + response.getMessage());
+                    setTimeout(singleCall, 1000);
+                },
+                onError: error => {
+                    logFunction("Hello Service responded with error: " + error);
+                }
+            });
+        };
+
+        //Kick it off
+        singleCall();
+    }
 
 }
 
-module.exports = {runHello};
+module.exports = {runHello, runPing};
