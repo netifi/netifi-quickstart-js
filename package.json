@@ -1,6 +1,6 @@
 {
   "name": "netifi-quickstart-js",
-  "version": "1.6.2",
+  "version": "1.6.3",
   "description": "The Netifi Quickstart exercise for JavaScript",
   "main": "index.js",
   "contributors": [
