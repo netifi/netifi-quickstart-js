@@ -3073,10 +3073,10 @@ neo-async@^2.5.0:
   resolved "https://sonatype.netifiinc.com/repository/npm-group/neo-async/-/neo-async-2.6.1.tgz#ac27ada66167fa8849a6addd837f6b189ad2081c"
   integrity sha512-iyam8fBuCUpWeKPGpaNMetEocMt364qkCsfL9JuhjXX6dRnguRVOfk2GZaDpPjcOKiiXCPINZC1GczQ7iTq3Zw==
 
-netifi-js-client@^1.6.2:
-  version "1.6.3"
-  resolved "https://sonatype.netifiinc.com/repository/npm-group/netifi-js-client/-/netifi-js-client-1.6.3.tgz#5cfc414f7f901786a08cab52f75c3ab2fc8e0536"
-  integrity sha512-4dGQcouL7OF3A0DQ2Jmw4L7DBYWuGVfgKGy5Jg9hUEk60hTdlR3GxqKlePfsf1aeg+skPxo331qY2LY3o+EdDg==
+netifi-js-client@^1.6.4:
+  version "1.6.4"
+  resolved "https://registry.yarnpkg.com/netifi-js-client/-/netifi-js-client-1.6.4.tgz#0fee53987732d0410c8643104171ef6a6bf83c20"
+  integrity sha512-28tinVqogPOhRx0eFW3x2UXaBnNHWWEKEumvZpzgiTonNF27qXg8LjQlgFeMHlZz63sIyW3Gvm1SH+Q92xEgDQ==
   dependencies:
     "@babel/plugin-proposal-class-properties" "^7.4.4"
     google-protobuf "^3.6.0"
