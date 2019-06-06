@@ -1,6 +1,6 @@
 {
   "name": "netifi-quickstart-js",
-  "version": "1.6.4",
+  "version": "1.6.5",
   "description": "The Netifi Quickstart exercise for JavaScript",
   "main": "index.js",
   "contributors": [
@@ -31,7 +31,7 @@
   },
   "dependencies": {
     "google-protobuf": "^3.6.1",
-    "netifi-js-client": "^1.6.4",
+    "netifi-js-client": "^1.6.5",
     "ws": "^6.1.0"
   }
 }
