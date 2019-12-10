@@ -1,11 +1,12 @@
 {
   "name": "netifi-quickstart-js",
-  "version": "1.6.9",
+  "version": "1.6.10",
   "description": "The Netifi Quickstart exercise for JavaScript",
   "main": "index.js",
   "contributors": [
     "Kyle Bahr (kyle@netifi.com)",
-    "Duncan Alexander (duncan@netifi.com)"
+    "Duncan Alexander (duncan@netifi.com)",
+    "Alan Scherger (alan@netifi.com)"
   ],
   "license": "MIT",
   "private": false,
@@ -31,7 +32,7 @@
   },
   "dependencies": {
     "google-protobuf": "^3.6.1",
-    "netifi-js-client": "^1.6.9",
+    "netifi-js-client": "^1.6.10",
     "ws": "^6.1.0"
   }
 }
